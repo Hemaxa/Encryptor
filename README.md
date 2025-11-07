@@ -1,6 +1,6 @@
 # Шифратор
 
-<img width="812" height="677" alt="Снимок экрана 2025-11-07 в 01 45 28" src="https://github.com/user-attachments/assets/cefa9d8c-fc6e-441a-b7f3-7365596a9736" />
+<img width="1012" height="740" alt="Снимок экрана 2025-11-07 в 16 20 26" src="https://github.com/user-attachments/assets/6b8d8a90-0dea-4c75-8115-646c4a5144d0" />
 
 Простое десктопное приложение для шифрования и дешифрования текста. Программа разработана на C++ с использованием фреймворка Qt 6.
 
