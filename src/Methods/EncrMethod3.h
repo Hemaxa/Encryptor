@@ -8,7 +8,7 @@ public:
     EncrMethod3();
     QString encrypt(const QString& text) override;
     QString decrypt(const QString& text) override;
-    QString methodName() const override { return "3. Замена первых 2 букв (таблица)"; }
+    QString methodName() const override { return "3. Замена последних 3 букв (таблица)"; }
 
 private:
     void initMaps();

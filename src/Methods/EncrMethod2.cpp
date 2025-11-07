@@ -14,10 +14,8 @@ QString EncrMethod2::encrypt(const QString& text)
             continue;
         }
 
-        std::reverse(word.begin(), word.end());
-
-        if (word.length() >= 2) {
-            std::swap(word[0], word[1]);
+        for (int i = 1; i < word.length() - 2; i += 4) {
+            std::swap(word[i], word[i + 2]);
         }
         result += word;
     }
@@ -26,22 +24,5 @@ QString EncrMethod2::encrypt(const QString& text)
 
 QString EncrMethod2::decrypt(const QString& text)
 {
-    QStringList parts = text.split(QRegularExpression("(\\s+)"));
-    QString result;
-
-    for (QString& word : parts) {
-        if (word.trimmed().isEmpty()) {
-            result += word;
-            continue;
-        }
-
-        if (word.length() >= 2) {
-            std::swap(word[0], word[1]);
-        }
-
-        std::reverse(word.begin(), word.end());
-
-        result += word;
-    }
-    return result;
+    return encrypt(text);
 }

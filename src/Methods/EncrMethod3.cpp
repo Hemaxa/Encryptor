@@ -57,17 +57,26 @@ QString EncrMethod3::encrypt(const QString& text)
             continue;
         }
 
-        if (word.length() >= 1) {
-            QChar upperChar = word[0].toUpper();
+        int len = word.length();
+
+        if (len >= 1) {
+            QChar upperChar = word[len - 1].toUpper();
             if (m_encryptMap.contains(upperChar)) {
-                word[0] = m_encryptMap.value(upperChar);
+                word[len - 1] = m_encryptMap.value(upperChar);
             }
         }
 
-        if (word.length() >= 2) {
-            QChar upperChar = word[1].toUpper();
+        if (len >= 2) {
+            QChar upperChar = word[len - 2].toUpper();
             if (m_encryptMap.contains(upperChar)) {
-                word[1] = m_encryptMap.value(upperChar);
+                word[len - 2] = m_encryptMap.value(upperChar);
+            }
+        }
+
+        if (len >= 3) {
+            QChar upperChar = word[len - 3].toUpper();
+            if (m_encryptMap.contains(upperChar)) {
+                word[len - 3] = m_encryptMap.value(upperChar);
             }
         }
 
@@ -90,15 +99,23 @@ QString EncrMethod3::decrypt(const QString& text)
             continue;
         }
 
-        if (word.length() >= 1) {
-            if (m_decryptMap.contains(word[0])) {
-                word[0] = m_decryptMap.value(word[0]);
+        int len = word.length();
+
+        if (len >= 1) {
+            if (m_decryptMap.contains(word[len - 1])) {
+                word[len - 1] = m_decryptMap.value(word[len - 1]);
             }
         }
 
-        if (word.length() >= 2) {
-            if (m_decryptMap.contains(word[1])) {
-                word[1] = m_decryptMap.value(word[1]);
+        if (len >= 2) {
+            if (m_decryptMap.contains(word[len - 2])) {
+                word[len - 2] = m_decryptMap.value(word[len - 2]);
+            }
+        }
+
+        if (len >= 3) {
+            if (m_decryptMap.contains(word[len - 3])) {
+                word[len - 3] = m_decryptMap.value(word[len - 3]);
             }
         }
 

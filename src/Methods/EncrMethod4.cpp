@@ -13,8 +13,8 @@ QString EncrMethod4::encrypt(const QString& text)
 
     QString result;
     for (int i = 0; i < text.length(); ++i) {
-        if (i % 2 == 0) {
-            int value = text[i].unicode() + key[i].unicode() - i;
+        if (i % 2 != 0) {
+            int value = text[i].unicode() - key[i].unicode() + i;
             result += QString("<%1>").arg(value);
         } else {
             result += text[i];
@@ -39,7 +39,7 @@ QString EncrMethod4::decrypt(const QString& text)
             throw std::runtime_error("Ошибка формата: шифртекст не соответствует ключу.");
         }
 
-        if (keyIndex % 2 == 0) {
+        if (keyIndex % 2 != 0) {
             if (text[textIndex] != '<') {
                 throw std::runtime_error("Ошибка формата: ожидался '<'.");
             }
@@ -57,7 +57,7 @@ QString EncrMethod4::decrypt(const QString& text)
                 throw std::runtime_error("Ошибка формата: не удалось прочитать число.");
             }
 
-            QChar originalChar = QChar(value - key[keyIndex].unicode() + keyIndex);
+            QChar originalChar = QChar(value + key[keyIndex].unicode() - keyIndex);
             result += originalChar;
 
             textIndex = endIndex + 1;
@@ -67,9 +67,6 @@ QString EncrMethod4::decrypt(const QString& text)
         }
 
         keyIndex++;
-    }
-
-    if (keyIndex != key.length()) {
     }
 
     return result;
